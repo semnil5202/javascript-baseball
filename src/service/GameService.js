@@ -5,7 +5,7 @@ class GameService {
   #answers;
 
   constructor() {
-    this.#answers = Computer.makeRandomNumber();
+    this.#answers = Computer.makeUniqueNumber();
   }
 
   checkPlayerNumber(players) {
@@ -13,7 +13,7 @@ class GameService {
   }
 
   changeAnswer() {
-    this.#answers = Computer.makeRandomNumber();
+    this.#answers = Computer.makeUniqueNumber();
   }
 }
 
