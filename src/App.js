@@ -12,14 +12,6 @@ class App {
     this.enterAnswer();
   }
 
-  compareAnswer(inputs) {
-    const score = this.calculateScore(this.answer, inputs);
-    const print = this.printScore(score);
-    MissionUtils.Console.print(print);
-    if (this.isTyping) this.enterAnswer();
-    else this.isContinueGame();
-  }
-
   printScore({ strike, ball }) {
     if (strike === 3) {
       this.isTyping = false;

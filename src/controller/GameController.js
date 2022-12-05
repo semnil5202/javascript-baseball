@@ -13,8 +13,14 @@ class GameController {
     const inputBalls = (input) => {
       const players = input.split('').map((i) => Number(i));
       const result = new Referee().isHit(Computer.makeUniqueNumber(), players);
+      this.isEndGame(result.end);
     };
     InputView.inputNumber(inputBalls);
+  }
+
+  isEndGame(end) {
+    if (end) this.inputNewGame();
+    if (!end) this.inputBalls();
   }
 }
 
