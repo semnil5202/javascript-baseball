@@ -11,6 +11,10 @@ class GameService {
   checkPlayerNumber(players) {
     return new Referee().isHit(this.#answers, players);
   }
+
+  changeAnswer() {
+    this.#answers = Computer.makeRandomNumber();
+  }
 }
 
 module.exports = GameService;

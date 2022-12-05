@@ -37,7 +37,10 @@ class GameController {
   }
 
   isReGame(reGame) {
-    if (reGame === 1) this.start();
+    if (reGame === 1) {
+      this.start();
+      this.#gameService.changeAnswer();
+    }
     if (reGame === 2) {
       OutputView.endMent();
       InputView.closeInput();
