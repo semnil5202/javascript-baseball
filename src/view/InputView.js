@@ -6,7 +6,7 @@ const InputView = {
   },
 
   inputNewGame(callback) {
-    Console.readLine('게임을 새로 시작 1, 종료 2 : ', callback);
+    Console.readLine('게임을 새로 시작 1, 종료 2 : \n', callback);
   },
 
   closeInput() {
