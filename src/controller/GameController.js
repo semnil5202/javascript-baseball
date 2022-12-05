@@ -1,6 +1,5 @@
 const OutputView = require('../view/OutputView');
 const InputView = require('../view/InputView');
-const GameService = require('../service/GameService');
 
 class GameController {
   #gameService;
@@ -39,8 +38,8 @@ class GameController {
 
   isReGame(reGame) {
     if (reGame === 1) {
-      this.start();
       this.#gameService.changeAnswer();
+      this.inputBalls();
     }
     if (reGame === 2) {
       OutputView.endMent();
