@@ -1,5 +1,5 @@
-const MissionUtils = require("@woowacourse/mission-utils");
-const handleException = require("./handleException");
+const MissionUtils = require('@woowacourse/mission-utils');
+const handleException = require('./model/Validation');
 
 class App {
   constructor() {
@@ -8,7 +8,7 @@ class App {
   }
 
   play() {
-    MissionUtils.Console.print("숫자 야구 게임을 시작합니다.");
+    MissionUtils.Console.print('숫자 야구 게임을 시작합니다.');
     this.enterAnswer();
   }
 
@@ -22,8 +22,8 @@ class App {
   }
 
   enterAnswer() {
-    MissionUtils.Console.readLine("숫자를 입력해주세요 : ", (input) => {
-      const inputs = input.split("").map((i) => Number(i));
+    MissionUtils.Console.readLine('숫자를 입력해주세요 : ', (input) => {
+      const inputs = input.split('').map((i) => Number(i));
       handleException(inputs);
       this.compareAnswer(inputs);
     });
@@ -54,16 +54,16 @@ class App {
     }
     if (strike !== 0 && ball === 0) return `${strike}스트라이크`;
     if (strike === 0 && ball !== 0) return `${ball}볼`;
-    if (strike === 0 && ball === 0) return "낫싱";
+    if (strike === 0 && ball === 0) return '낫싱';
     return `${ball}볼 ${strike}스트라이크`;
   }
 
   isContinueGame() {
     MissionUtils.Console.readLine(
-      "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. \n",
+      '게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. \n',
       (input) => {
         this.continueOrEnd(Number(input));
-      }
+      },
     );
   }
 
@@ -74,11 +74,11 @@ class App {
       this.enterAnswer();
     }
     if (input === 2) {
-      MissionUtils.Console.print("게임을 종료합니다.");
+      MissionUtils.Console.print('게임을 종료합니다.');
       MissionUtils.Console.close();
     }
     if (input !== 1 && input !== 2) {
-      throw "1 또는 2만 입력할 수 있습니다.";
+      throw '1 또는 2만 입력할 수 있습니다.';
     }
   }
 }
