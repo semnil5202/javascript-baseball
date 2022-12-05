@@ -22,6 +22,22 @@ class GameController {
     if (end) this.inputNewGame();
     if (!end) this.inputBalls();
   }
+
+  inputNewGame() {
+    const inputNewGame = (input) => {
+      const reGame = Number(input);
+      this.isReGame(reGame);
+    };
+    InputView.inputNewGame(inputNewGame);
+  }
+
+  isReGame(reGame) {
+    if (reGame === 1) this.start();
+    if (reGame === 2) {
+      OutputView.endMent();
+      InputView.closeInput();
+    }
+  }
 }
 
 module.exports = GameController;

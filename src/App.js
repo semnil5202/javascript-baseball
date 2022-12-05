@@ -22,30 +22,6 @@ class App {
     if (strike === 0 && ball === 0) return '낫싱';
     return `${ball}볼 ${strike}스트라이크`;
   }
-
-  isContinueGame() {
-    MissionUtils.Console.readLine(
-      '게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요. \n',
-      (input) => {
-        this.continueOrEnd(Number(input));
-      },
-    );
-  }
-
-  continueOrEnd(input) {
-    if (input === 1) {
-      this.isTyping = true;
-      this.answer = this.makeRandomNumber();
-      this.enterAnswer();
-    }
-    if (input === 2) {
-      MissionUtils.Console.print('게임을 종료합니다.');
-      MissionUtils.Console.close();
-    }
-    if (input !== 1 && input !== 2) {
-      throw '1 또는 2만 입력할 수 있습니다.';
-    }
-  }
 }
 
 module.exports = App;
