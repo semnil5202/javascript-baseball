@@ -25,6 +25,8 @@ class Referee {
   }
 
   getResult() {
+    if (this.#strike === 3)
+      return `${this.#strike}스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료`;
     if (this.#strike !== 0 && this.#ball === 0) return `${this.#strike}스트라이크`;
     if (this.#strike === 0 && this.#ball !== 0) return `${this.#ball}볼`;
     if (this.#strike === 0 && this.#ball === 0) return '낫싱';
