@@ -12,14 +12,6 @@ class App {
     this.enterAnswer();
   }
 
-  enterAnswer() {
-    MissionUtils.Console.readLine('숫자를 입력해주세요 : ', (input) => {
-      const inputs = input.split('').map((i) => Number(i));
-      handleException(inputs);
-      this.compareAnswer(inputs);
-    });
-  }
-
   compareAnswer(inputs) {
     const score = this.calculateScore(this.answer, inputs);
     const print = this.printScore(score);
