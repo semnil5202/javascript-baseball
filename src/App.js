@@ -1,10 +1,10 @@
-const MissionUtils = require('@woowacourse/mission-utils');
-const handleException = require('./model/Validation');
+const GameController = require('./controller/GameController');
+const GameService = require('./service/GameService');
 
 class App {
-  constructor() {
-    this.answer = this.makeRandomNumber();
-    this.isTyping = true;
+  play() {
+    const gameController = new GameController(new GameService());
+    gameController.start();
   }
 }
 
