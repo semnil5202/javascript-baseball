@@ -5,7 +5,7 @@ const Computer = require('../model/Computer');
 
 class GameController {
   start() {
-    OutputView.startMent();
+    OutputView.startMent(); //
     this.inputBalls();
   }
 

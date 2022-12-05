@@ -7,11 +7,6 @@ class App {
     this.isTyping = true;
   }
 
-  play() {
-    MissionUtils.Console.print('숫자 야구 게임을 시작합니다.');
-    this.enterAnswer();
-  }
-
   printScore({ strike, ball }) {
     if (strike === 3) {
       this.isTyping = false;
