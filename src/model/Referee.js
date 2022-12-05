@@ -6,7 +6,7 @@ class Referee {
     answers.forEach((_, index) => {
       this.scorePlayers({ answers, players, index });
     });
-    return { strike: this.#strike, ball: this.#ball, end: this.isEndGame() };
+    return { result: this.getResult(), end: this.isEndGame() };
   }
 
   scorePlayers({ answers, players, index }) {
@@ -17,6 +17,13 @@ class Referee {
   isEndGame() {
     if (this.#strike === 3) return true;
     return false;
+  }
+
+  getResult() {
+    if (this.#strike !== 0 && this.#ball === 0) return `${this.#strike}스트라이크`;
+    if (this.#strike === 0 && this.#ball !== 0) return `${this.ball}볼`;
+    if (this.#strike === 0 && this.#ball === 0) return '낫싱';
+    return `${this.#ball}볼 ${this.#strike}스트라이크`;
   }
 }
 

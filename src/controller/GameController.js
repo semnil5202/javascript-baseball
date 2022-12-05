@@ -18,6 +18,7 @@ class GameController {
     const inputBalls = (input) => {
       const players = input.split('').map((i) => Number(i));
       const result = this.#gameService.checkPlayerNumber(players);
+      OutputView.outputScore(result.result);
       this.isEndGame(result.end);
     };
     InputView.inputNumber(inputBalls);
