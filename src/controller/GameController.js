@@ -1,18 +1,17 @@
 const OutputView = require('../view/OutputView');
 const InputView = require('../view/InputView');
-const Referee = require('../model/Referee');
-const Computer = require('../model/Computer');
+const GameService = require('../service/GameService');
 
 class GameController {
   start() {
-    OutputView.startMent(); //
+    OutputView.startMent();
     this.inputBalls();
   }
 
   inputBalls() {
     const inputBalls = (input) => {
       const players = input.split('').map((i) => Number(i));
-      const result = new Referee().isHit(Computer.makeUniqueNumber(), players);
+      const result = new GameService().checkPlayerNumber(players);
       this.isEndGame(result.end);
     };
     InputView.inputNumber(inputBalls);
