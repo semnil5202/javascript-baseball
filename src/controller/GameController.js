@@ -3,6 +3,12 @@ const InputView = require('../view/InputView');
 const GameService = require('../service/GameService');
 
 class GameController {
+  #gameService;
+
+  constructor(gameService) {
+    this.#gameService = gameService;
+  }
+
   start() {
     OutputView.startMent();
     this.inputBalls();
@@ -11,7 +17,7 @@ class GameController {
   inputBalls() {
     const inputBalls = (input) => {
       const players = input.split('').map((i) => Number(i));
-      const result = new GameService().checkPlayerNumber(players);
+      const result = this.#gameService.checkPlayerNumber(players);
       this.isEndGame(result.end);
     };
     InputView.inputNumber(inputBalls);
