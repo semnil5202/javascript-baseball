@@ -3,7 +3,7 @@ const { Random } = require('@woowacourse/mission-utils');
 const Computer = {
   makeUniqueNumber() {
     const answers = [];
-    while (answers !== 3) this.isUnique(answers, this.makeRandomNumber());
+    while (answers.length !== 3) this.isUnique(answers, this.makeRandomNumber());
     return answers;
   },
 
