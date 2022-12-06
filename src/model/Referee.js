@@ -1,3 +1,5 @@
+const { OUTPUT } = require('../util/constant');
+
 class Referee {
   #strike;
   #ball;
@@ -25,12 +27,11 @@ class Referee {
   }
 
   getResult() {
-    if (this.#strike === 3)
-      return `${this.#strike}스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료`;
-    if (this.#strike !== 0 && this.#ball === 0) return `${this.#strike}스트라이크`;
-    if (this.#strike === 0 && this.#ball !== 0) return `${this.#ball}볼`;
-    if (this.#strike === 0 && this.#ball === 0) return '낫싱';
-    return `${this.#ball}볼 ${this.#strike}스트라이크`;
+    if (this.#strike === 3) return OUTPUT.WIN(this.#strike);
+    if (this.#strike !== 0 && this.#ball === 0) return OUTPUT.STRIKE(this.#strike);
+    if (this.#strike === 0 && this.#ball !== 0) return OUTPUT.BALL(this.#ball);
+    if (this.#strike === 0 && this.#ball === 0) return OUTPUT.NOTHING;
+    return OUTPUT.BALL_STRIKE(this.#ball, this.#strike);
   }
 }
 
