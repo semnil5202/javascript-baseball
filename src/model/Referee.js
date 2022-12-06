@@ -1,4 +1,5 @@
 const { OUTPUT } = require('../util/constant');
+const ResultDto = require('../dto/ResultDto');
 
 class Referee {
   #strike;
@@ -13,7 +14,7 @@ class Referee {
     answers.forEach((_, index) => {
       this.scorePlayers({ answers, players, index });
     });
-    return { result: this.getResult().result, end: this.getResult().isEnd };
+    return new ResultDto(this.getResult().result, this.getResult().isEnd);
   }
 
   scorePlayers({ answers, players, index }) {
