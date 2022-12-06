@@ -13,7 +13,7 @@ class Referee {
     answers.forEach((_, index) => {
       this.scorePlayers({ answers, players, index });
     });
-    return { result: this.getResult(), end: this.isEndGame() };
+    return { result: this.getResult().result, end: this.getResult().isEnd };
   }
 
   scorePlayers({ answers, players, index }) {
@@ -21,17 +21,16 @@ class Referee {
     else if (answers.includes(players[index])) this.#ball += 1;
   }
 
-  isEndGame() {
-    if (this.#strike === 3) return true;
-    return false;
-  }
-
   getResult() {
-    if (this.#strike === 3) return OUTPUT.WIN(this.#strike);
-    if (this.#strike !== 0 && this.#ball === 0) return OUTPUT.STRIKE(this.#strike);
-    if (this.#strike === 0 && this.#ball !== 0) return OUTPUT.BALL(this.#ball);
-    if (this.#strike === 0 && this.#ball === 0) return OUTPUT.NOTHING;
-    return OUTPUT.BALL_STRIKE(this.#ball, this.#strike);
+    if (this.#strike === 3) return { result: OUTPUT.WIN(this.#strike), isEnd: true };
+    if (this.#strike !== 0 && this.#ball === 0) {
+      return { result: OUTPUT.STRIKE(this.#strike), isEnd: false };
+    }
+    if (this.#strike === 0 && this.#ball !== 0) {
+      return { result: OUTPUT.BALL(this.#ball), isEnd: false };
+    }
+    if (this.#strike === 0 && this.#ball === 0) return { result: OUTPUT.NOTHING, isEnd: false };
+    return { result: OUTPUT.BALL_STRIKE(this.#ball, this.#strike), isEnd: false };
   }
 }
 
