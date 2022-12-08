@@ -18,17 +18,17 @@ class Referee {
     this.#strike = 0;
     this.#ball = 0;
     answers.forEach((_, index) => {
-      this.scorePlayers({ answers, players, index });
+      this.#scorePlayers({ answers, players, index });
     });
-    return new ResultDto(this.calcuatePlayers().result, this.calcuatePlayers().isEnd);
+    return new ResultDto(this.#calculatePlayers().result, this.#calculatePlayers().isEnd);
   }
 
-  scorePlayers({ answers, players, index }) {
+  #scorePlayers({ answers, players, index }) {
     if (answers[index] === players[index]) this.#strike += 1;
     else if (answers.includes(players[index])) this.#ball += 1;
   }
 
-  calcuatePlayers() {
+  #calculatePlayers() {
     if (this.#strike === UTIL.ALL_HIT) return { result: OUTPUT.WIN(this.#strike), isEnd: true };
     if (this.#strike !== UTIL.NO_HIT && this.#ball === UTIL.NO_HIT) {
       return { result: OUTPUT.STRIKE(this.#strike), isEnd: false };

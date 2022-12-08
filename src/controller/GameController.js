@@ -10,45 +10,46 @@ class GameController {
   constructor(gameService) {
     if (GameController.#instance !== undefined) return GameController.#instance;
     GameController.#instance = this;
+
     this.#gameService = gameService;
   }
 
   start() {
     OutputView.startMent();
-    this.inputBalls();
+    this.#inputBalls();
   }
 
-  inputBalls() {
+  #inputBalls() {
     const inputBalls = (input) => {
       const players = input.split(UTIL.CRITERION).map((i) => Number(i));
       Validation.validateBall(players);
 
       const result = this.#gameService.scorePlayerNumber(players);
       OutputView.outputScore(result.getResult());
-      this.isEndGame(result.getIsEnd());
+      this.#isEndGame(result.getIsEnd());
     };
     InputView.inputNumber(inputBalls);
   }
 
-  isEndGame(end) {
-    if (end) this.inputNewGame();
-    if (!end) this.inputBalls();
+  #isEndGame(end) {
+    if (end) this.#inputNewGame();
+    if (!end) this.#inputBalls();
   }
 
-  inputNewGame() {
+  #inputNewGame() {
     const inputNewGame = (input) => {
       const reGame = Number(input);
       Validation.validateReGame(reGame);
 
-      this.isReGame(reGame);
+      this.#isReGame(reGame);
     };
     InputView.inputNewGame(inputNewGame);
   }
 
-  isReGame(reGame) {
+  #isReGame(reGame) {
     if (reGame === UTIL.REGAME) {
       this.#gameService.changeAnswer();
-      this.inputBalls();
+      this.#inputBalls();
     }
     if (reGame === UTIL.ENDGAME) {
       OutputView.endMent();
