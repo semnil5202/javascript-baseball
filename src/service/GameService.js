@@ -9,7 +9,7 @@ class GameService {
   }
 
   checkPlayerNumber(players) {
-    return new Referee(0, 0).isHit(this.#answers, players);
+    return Referee.isHit(this.#answers, players);
   }
 
   changeAnswer() {
