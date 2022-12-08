@@ -4,9 +4,12 @@ const Validation = require('../util/Validation');
 const { UTIL } = require('../util/constant');
 
 class GameController {
+  static #instance;
   #gameService;
 
   constructor(gameService) {
+    if (GameController.#instance !== undefined) return GameController.#instance;
+    GameController.#instance = this;
     this.#gameService = gameService;
   }
 
