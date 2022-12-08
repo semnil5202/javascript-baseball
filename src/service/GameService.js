@@ -5,7 +5,7 @@ class GameService {
   #answers;
 
   constructor() {
-    this.#answers = Computer.makeUniqueNumber();
+    this.#answers = new Computer([]).makeUniqueNumber();
   }
 
   scorePlayerNumber(players) {
@@ -13,7 +13,7 @@ class GameService {
   }
 
   changeAnswer() {
-    this.#answers = Computer.makeUniqueNumber();
+    this.#answers = new Computer([]).makeUniqueNumber();
   }
 }
 

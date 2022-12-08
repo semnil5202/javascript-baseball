@@ -1,20 +1,27 @@
 const { Random } = require('@woowacourse/mission-utils');
 const { UTIL } = require('../util/constant');
 
-const Computer = {
+class Computer {
+  #answers;
+
+  constructor(answers) {
+    this.#answers = answers;
+  }
+
   makeUniqueNumber() {
-    const answers = [];
-    while (answers.length !== UTIL.LENGTH) this.isUnique(answers, this.makeRandomNumber());
-    return answers;
-  },
+    while (this.#answers.length !== UTIL.LENGTH) {
+      this.isUnique(this.makeRandomNumber());
+    }
+    return this.#answers;
+  }
 
   makeRandomNumber() {
     return Random.pickNumberInRange(UTIL.MIN, UTIL.MAX);
-  },
+  }
 
-  isUnique(answers, number) {
-    if (!answers.includes(number)) answers.push(number);
-  },
-};
+  isUnique(number) {
+    if (!this.#answers.includes(number)) this.#answers.push(number);
+  }
+}
 
 module.exports = Computer;
