@@ -1,5 +1,6 @@
 const OutputView = require('../view/OutputView');
 const InputView = require('../view/InputView');
+const Validation = require('../util/Validation');
 const { UTIL } = require('../util/constant');
 
 class GameController {
@@ -17,6 +18,8 @@ class GameController {
   inputBalls() {
     const inputBalls = (input) => {
       const players = input.split(UTIL.CRITERION).map((i) => Number(i));
+      Validation.validateBall(players);
+
       const result = this.#gameService.scorePlayerNumber(players);
       OutputView.outputScore(result.getResult());
       this.isEndGame(result.getIsEnd());
@@ -32,6 +35,8 @@ class GameController {
   inputNewGame() {
     const inputNewGame = (input) => {
       const reGame = Number(input);
+      Validation.validateReGame(reGame);
+
       this.isReGame(reGame);
     };
     InputView.inputNewGame(inputNewGame);
