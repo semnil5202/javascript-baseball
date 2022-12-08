@@ -24,4 +24,13 @@ const OUTPUT = Object.freeze({
   END_GAME: '게임을 종료합니다.',
 });
 
-module.exports = { UTIL, INPUT, OUTPUT };
+const ERROR = Object.freeze({
+  INTEGER: '[ERROR] 정수만 입력할 수 있습니다.',
+  NUMBER: '[ERROR] 숫자만 입력할 수 있습니다.',
+  DUPLICATE: '[ERROR] 중복된 숫자는 입력할 수 없습니다.',
+  LENGTH: '[ERROR] 세 자리 수만 입력할 수 있습니다.',
+  ZERO: '[ERROR] 숫자 0은 입력할 수 없습니다.',
+  REGAME: '[ERROR] 재시작 1 또는 종료 2 외에는 입력할 수 없습니다.',
+});
+
+module.exports = { UTIL, INPUT, OUTPUT, ERROR };
