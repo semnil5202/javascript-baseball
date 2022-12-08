@@ -1,4 +1,4 @@
-const { OUTPUT } = require('../util/constant');
+const { UTIL, OUTPUT } = require('../util/constant');
 const ResultDto = require('../dto/ResultDto');
 
 const Referee = {
@@ -20,14 +20,16 @@ const Referee = {
   },
 
   getResult() {
-    if (this.strike === 3) return { result: OUTPUT.WIN(this.strike), isEnd: true };
-    if (this.strike !== 0 && this.ball === 0) {
+    if (this.strike === UTIL.ALL_HIT) return { result: OUTPUT.WIN(this.strike), isEnd: true };
+    if (this.strike !== UTIL.NO_HIT && this.ball === UTIL.NO_HIT) {
       return { result: OUTPUT.STRIKE(this.strike), isEnd: false };
     }
-    if (this.strike === 0 && this.ball !== 0) {
+    if (this.strike === UTIL.NO_HIT && this.ball !== UTIL.NO_HIT) {
       return { result: OUTPUT.BALL(this.ball), isEnd: false };
     }
-    if (this.strike === 0 && this.ball === 0) return { result: OUTPUT.NOTHING, isEnd: false };
+    if (this.strike === UTIL.NO_HIT && this.ball === UTIL.NO_HIT) {
+      return { result: OUTPUT.NOTHING, isEnd: false };
+    }
     return { result: OUTPUT.BALL_STRIKE(this.ball, this.strike), isEnd: false };
   },
 };

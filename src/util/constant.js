@@ -5,6 +5,8 @@ const UTIL = Object.freeze({
   ENDGAME: 2,
   LENGTH: 3,
   CRITERION: '',
+  NO_HIT: 0,
+  ALL_HIT: 3,
 });
 
 const INPUT = Object.freeze({
