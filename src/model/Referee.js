@@ -11,7 +11,7 @@ const Referee = {
     answers.forEach((_, index) => {
       this.scorePlayers({ answers, players, index });
     });
-    return new ResultDto(this.getResult().result, this.getResult().isEnd);
+    return new ResultDto(this.calcuatePlayers().result, this.calcuatePlayers().isEnd);
   },
 
   scorePlayers({ answers, players, index }) {
@@ -19,7 +19,7 @@ const Referee = {
     else if (answers.includes(players[index])) this.ball += 1;
   },
 
-  getResult() {
+  calcuatePlayers() {
     if (this.strike === UTIL.ALL_HIT) return { result: OUTPUT.WIN(this.strike), isEnd: true };
     if (this.strike !== UTIL.NO_HIT && this.ball === UTIL.NO_HIT) {
       return { result: OUTPUT.STRIKE(this.strike), isEnd: false };

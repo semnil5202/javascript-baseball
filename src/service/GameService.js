@@ -8,7 +8,7 @@ class GameService {
     this.#answers = Computer.makeUniqueNumber();
   }
 
-  checkPlayerNumber(players) {
+  scorePlayerNumber(players) {
     return Referee.isHit(this.#answers, players);
   }
 
