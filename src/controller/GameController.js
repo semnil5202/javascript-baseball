@@ -1,5 +1,6 @@
 const OutputView = require('../view/OutputView');
 const InputView = require('../view/InputView');
+const { UTIL } = require('../util/constant');
 
 class GameController {
   #gameService;
@@ -15,7 +16,7 @@ class GameController {
 
   inputBalls() {
     const inputBalls = (input) => {
-      const players = input.split('').map((i) => Number(i));
+      const players = input.split(UTIL.CRITERION).map((i) => Number(i));
       const result = this.#gameService.checkPlayerNumber(players);
       OutputView.outputScore(result.getResult());
       this.isEndGame(result.getIsEnd());
@@ -37,11 +38,11 @@ class GameController {
   }
 
   isReGame(reGame) {
-    if (reGame === 1) {
+    if (reGame === UTIL.REGAME) {
       this.#gameService.changeAnswer();
       this.inputBalls();
     }
-    if (reGame === 2) {
+    if (reGame === UTIL.ENDGAME) {
       OutputView.endMent();
       InputView.closeInput();
     }

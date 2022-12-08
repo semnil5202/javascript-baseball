@@ -1,8 +1,9 @@
 const { Console } = require('@woowacourse/mission-utils');
+const { OUTPUT } = require('../util/constant');
 
 const OutputView = {
   startMent() {
-    Console.print('숫자 야구 게임을 시작합니다.');
+    Console.print(OUTPUT.START_GAME);
   },
 
   outputScore(resultString) {
@@ -10,7 +11,7 @@ const OutputView = {
   },
 
   endMent() {
-    Console.print('게임을 종료합니다.');
+    Console.print(OUTPUT.END_GAME);
   },
 };
 
