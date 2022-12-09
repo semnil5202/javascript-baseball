@@ -1,5 +1,10 @@
+const GameController = require('./controller/GameController');
+const GameService = require('./service/GameService');
+
 class App {
-  play() {}
+  play() {
+    new GameController(new GameService()).start();
+  }
 }
 
 module.exports = App;
